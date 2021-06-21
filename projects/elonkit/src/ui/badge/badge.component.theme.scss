@@ -1,0 +1,21 @@
+@mixin es-badge-theme($theme, $elonkit-theme) {
+  $cl-mono-b: map-get($elonkit-theme, mono-b);
+  $attention: map-get($elonkit-theme, attention);
+
+  /* stylelint-disable-next-line */
+  .es-badge__content {
+    background-color: mat-color($attention, 500);
+
+    [es-role='icon'] {
+      background-color: mat-color($cl-mono-b, 500);
+    }
+
+    [es-role='child'] {
+      color: mat-color($cl-mono-b, 500);
+    }
+
+    [es-role='count'] {
+      color: mat-color($cl-mono-b, 500);
+    }
+  }
+}

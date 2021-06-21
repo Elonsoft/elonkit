@@ -9,6 +9,7 @@
 @import '../ui/paginator/paginator.component.theme';
 @import '../ui/surface/surface.component.theme';
 @import '../ui/tooltip/tooltip.component.theme';
+@import './ui/badge/badge.component.theme';
 
 @function es-make-theme($es-theme) {
   $result: $es-theme;
@@ -45,4 +46,5 @@
   @include es-paginator-theme($theme, $es-theme);
   @include es-surface-theme($theme, $es-theme);
   @include es-tooltip-theme($theme, $es-theme);
+  @include es-badge-theme($theme, $es-theme);
 }

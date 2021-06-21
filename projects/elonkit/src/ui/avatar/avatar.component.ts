@@ -46,10 +46,10 @@ export class ESAvatarComponent {
    */
   @Input()
   public get typography(): string {
-    return this._typography;
+    return this._typography || 'es-subtitle-2';
   }
   public set typography(value: string) {
-    this._typography = value || 'es-subtitle-2';
+    this._typography = value;
   }
   private _typography: string;
 

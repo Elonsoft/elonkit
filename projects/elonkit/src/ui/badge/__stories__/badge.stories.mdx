@@ -1,0 +1,319 @@
+import { Meta, Story, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Canvas } from '~storybook/components';
+import { action } from '@storybook/addon-actions';
+
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
+import { ESBadgeComponent, ESBadgeModule } from '..';
+
+import { ESAvatarModule } from '@elonsoft/elonkit/ui/avatar';
+
+import { BADGE_STORY_BASIC_SOURCE } from './badge-story-basic';
+import { BADGE_STORY_ICON_SOURCE } from './badge-story-icon';
+import { BADGE_STORY_COUNT_SOURCE } from './badge-story-count';
+import { BADGE_STORY_CUSTOM_SOURCE } from './badge-story-custom';
+
+<Meta
+  title='UI/Badge'
+  args={{
+    size: 14,
+    borderSize: 2,
+    position: 'below after'
+  }}
+  argTypes={{
+    size: {
+      control: 'number'
+    },
+    borderSize: {
+      control: 'number'
+    },
+    position: {
+      control: {
+        type: 'select',
+        options: ['above before', 'above after', 'below before', 'below after']
+      }
+    }
+  }}
+/>
+
+# Badge
+
+Generates a badge component to the different positions of its children. Pass children component
+with attribute es-role="child"
+
+## Demos
+
+####
+
+####
+
+### Basic badge
+
+Basic badge with no image using color input as background color and borderSize input as border size:
+
+####
+
+<Canvas source={BADGE_STORY_BASIC_SOURCE}>
+  <Story
+    name='Basic'
+    args={{ color: '' }}
+    argTypes={{
+      color: {
+        control: 'string'
+      }
+    }}
+  >
+    {((args) => ({
+      template: `
+        <es-badge
+          [size]="size"
+          [color]="color"
+          [borderSize]="borderSize"
+          [position]="position"
+        >
+          <es-avatar></es-avatar>
+        </es-badge>
+        <es-badge
+          [size]="size"
+          [color]="color"
+          [borderSize]="borderSize"
+          [position]="position"
+        >
+          <button type="button" color="primary" mat-icon-button>
+            <mat-icon>favorite</mat-icon>
+          </button>
+        </es-badge>
+      `,
+      moduleMetadata: {
+        imports: [ESBadgeModule, ESAvatarModule, MatButtonModule, MatIconModule]
+      },
+      props: {
+        ...args
+      }
+    })).bind({})}
+  </Story>
+</Canvas>
+
+####
+
+####
+
+### Icon badge
+
+Badge with icon. Pass icon via ng-content with attribute es-role="icon":
+
+####
+
+<Canvas source={BADGE_STORY_ICON_SOURCE}>
+  <Story name='Icon'>
+    {((args) => ({
+      template: `
+        <es-badge
+          [size]="size"
+          [borderSize]="borderSize"
+          [position]="position"
+        >
+          <mat-icon es-role="icon" color="primary">face</mat-icon>
+          <es-avatar></es-avatar>
+        </es-badge>
+        <es-badge
+          [size]="size"
+          [borderSize]="borderSize"
+          [position]="position"
+        >
+          <mat-icon es-role="icon" color="primary">face</mat-icon>
+          <button type="button" color="primary" mat-icon-button>
+            <mat-icon>favorite</mat-icon>
+          </button>
+        </es-badge>
+      `,
+      moduleMetadata: {
+        imports: [ESBadgeModule, ESAvatarModule, MatButtonModule, MatIconModule]
+      },
+      props: {
+        ...args
+      }
+    })).bind({})}
+  </Story>
+</Canvas>
+
+####
+
+####
+
+### Count badge
+
+Badge with count. Pass count via ng-content with attribute es-role="count":
+
+####
+
+<Canvas source={BADGE_STORY_COUNT_SOURCE}>
+  <Story
+    name='Count'
+    args={{
+      color: ''
+    }}
+    argTypes={{
+      color: {
+        control: 'string'
+      }
+    }}
+  >
+    {((args) => ({
+      template: `
+        <es-badge
+          [size]="size"
+          [color]="color"
+          [borderSize]="borderSize"
+          [position]="position"
+        >
+          <span es-role="count">1</span>
+          <es-avatar></es-avatar>
+        </es-badge>
+        <es-badge
+          [size]="size"
+          [color]="color"
+          [borderSize]="borderSize"
+          [position]="position"
+        >
+          <span es-role="count">1</span>
+          <button type="button" color="primary" mat-icon-button>
+            <mat-icon>favorite</mat-icon>
+          </button>
+        </es-badge>
+      `,
+      moduleMetadata: {
+        imports: [ESBadgeModule, ESAvatarModule, MatButtonModule, MatIconModule]
+      },
+      props: {
+        ...args
+      }
+    })).bind({})}
+  </Story>
+</Canvas>
+
+####
+
+### Custom badge
+
+Badge with custom position. If position input is undefined use offsetHorizontal/offsetVertical inputs
+to set horizontal and vertical offset of child element mask; to change badge positions use
+positions input as object of positions:
+
+<Canvas source={BADGE_STORY_CUSTOM_SOURCE}>
+  <Story
+    name='Custom'
+    args={{
+      position: '',
+      offsetHorizontal: 4,
+      offsetVertical: 20,
+      positions: { 'top.px': '11', 'right.px': '-2' }
+    }}
+    argTypes={{
+      position: {
+        control: {
+          type: 'select',
+          options: ['above before', 'above after', 'below before', 'below after']
+        }
+      },
+      positions: {
+        control: { type: 'object' }
+      },
+      offsetHorizontal: {
+        control: 'number'
+      },
+      offsetVertical: {
+        control: 'number'
+      }
+    }}
+  >
+    {((args) => ({
+      template: `
+        <es-badge
+          [position]="position"
+          [positions]="positions"
+          [offsetHorizontal]="offsetHorizontal"
+          [offsetVertical]="offsetVertical"
+        >
+          <es-avatar></es-avatar>
+        </es-badge>
+        <es-badge
+          [position]="position"
+          [positions]="positions"
+          [offsetHorizontal]="offsetHorizontal"
+          [offsetVertical]="offsetVertical"
+        >
+          <button type="button" color="primary" mat-icon-button>
+            <mat-icon>favorite</mat-icon>
+          </button>
+        </es-badge>
+      `,
+      moduleMetadata: {
+        imports: [ESBadgeModule, ESAvatarModule, MatButtonModule, MatIconModule]
+      },
+      props: {
+        ...args
+      }
+    })).bind({})}
+  </Story>
+</Canvas>
+
+####
+
+####
+
+## API
+
+<ArgsTable of={ESBadgeComponent} />
+
+## Interfaces
+
+ESBadgeDefaultOptions defines default badge size
+
+```ts
+export interface ESBadgeDefaultOptions {
+  size?: number;
+  position?: ESBadgePosition;
+  borderSize?: number;
+}
+```
+
+ESBadgePosition defines badge position type
+
+```ts
+export enum ESBadgePosition {
+  AboveBefore = 'above before',
+  AboveAfter = 'above after',
+  BelowBefore = 'below before',
+  BelowAfter = 'below after'
+}
+```
+
+ESBadgePositionStyles defines types for object of custom positions
+
+```ts
+export interface ESBadgePositionStyles {
+  'top.px'?: number;
+  'right.px'?: number;
+  'bottom.px'?: number;
+  'left.px'?: number;
+}
+```
+
+Injection token that can be used to configure the default options for all components within an app.
+
+```ts
+import { ES_BADGE_DEFAULT_OPTIONS } from '@elonsoft/elonkit/ui/badge';
+
+@NgModule({
+  providers: [
+    {
+      provide: ES_BADGE_DEFAULT_OPTIONS,
+      useValue: {
+        size: 14
+      }
+    }
+  ]
+})
+```

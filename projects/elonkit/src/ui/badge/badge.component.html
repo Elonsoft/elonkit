@@ -1,0 +1,13 @@
+<div class="es-badge">
+  <div class="es-badge__content"
+    [ngStyle]="stylesObject()"
+  >
+    <ng-content select="[es-role=icon]"></ng-content>
+    <div data-testid="badge" class="es-caption">
+      <ng-content select="[es-role=count]"></ng-content>
+    </div>
+  </div>
+  <div #childElement>
+    <ng-content></ng-content>
+  </div>
+</div>

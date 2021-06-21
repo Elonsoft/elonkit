@@ -1,0 +1,34 @@
+$div-width: 40;
+$badge-size: 16;
+
+.es-badge {
+  position: relative;
+  width: fit-content;
+
+  > :nth-child(2) {
+    display: block;
+    mask: radial-gradient(
+      circle at calc(var(--childElement) - var(--offsetHorizontal) - var(--borderSize))
+        calc(var(--childElement) - var(--offsetVertical) - var(--borderSize)),
+      transparent var(--transparent),
+      #fff 0
+    );
+  }
+
+  &__content {
+    align-items: center;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 1000;
+
+    [es-role='icon'] {
+      border-radius: 50%;
+      font-size: 16px;
+      height: fit-content;
+      width: fit-content;
+    }
+  }
+}

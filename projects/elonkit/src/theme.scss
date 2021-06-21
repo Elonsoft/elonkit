@@ -1,0 +1,123 @@
+@import './ui/alert/alert.component.theme';
+@import './ui/dropzone/dropzone.component.theme';
+@import './ui/inline-form-field/inline-form-field.component.theme';
+@import './ui/dropzone/dropzone.component.theme';
+@import './ui/avatar/avatar.component.theme';
+@import './ui//badge//badge.component.theme';
+
+$elonkit-default-theme: (
+  info:
+    mat-palette(
+      (
+        50: #e9f4ff,
+        100: #c8e3ff,
+        200: #a3d1ff,
+        300: #7ebfff,
+        400: #63b1ff,
+        500: #47a3ff,
+        600: #409bff,
+        700: #3791ff,
+        800: #2f88ff,
+        900: #2077ff,
+        A100: #fff,
+        A200: #fff,
+        A400: #cfe1ff,
+        A700: #b6d0ff,
+        contrast: (
+          50: #000,
+          100: #000,
+          200: #000,
+          300: #000,
+          400: #000,
+          500: #000,
+          600: #000,
+          700: #000,
+          800: #fff,
+          900: #fff,
+          A100: #000,
+          A200: #000,
+          A400: #000,
+          A700: #000
+        )
+      )
+    ),
+  success:
+    mat-palette(
+      (
+        50: #e7f9f2,
+        100: #c3efdf,
+        200: #9be4ca,
+        300: #73d9b5,
+        400: #55d1a5,
+        500: #37c995,
+        600: #31c38d,
+        700: #2abc82,
+        800: #23b578,
+        900: #16a967,
+        A100: #dcffee,
+        A200: #a9ffd6,
+        A400: #76ffbd,
+        A700: #5dffb1,
+        contrast: (
+          50: #000,
+          100: #000,
+          200: #000,
+          300: #000,
+          400: #000,
+          500: #000,
+          600: #000,
+          700: #000,
+          800: #000,
+          900: #fff,
+          A100: #000,
+          A200: #000,
+          A400: #000,
+          A700: #000
+        )
+      )
+    ),
+  danger:
+    mat-palette(
+      (
+        50: #fdf2e5,
+        100: #fadebe,
+        200: #f7c992,
+        300: #f3b366,
+        400: #f1a246,
+        500: #ee9225,
+        600: #ec8a21,
+        700: #e97f1b,
+        800: #e77516,
+        900: #e2630d,
+        A100: #fff,
+        A200: #ffe8da,
+        A400: #ffc7a7,
+        A700: #ffb78e,
+        contrast: (
+          50: #000,
+          100: #000,
+          200: #000,
+          300: #000,
+          400: #000,
+          500: #000,
+          600: #000,
+          700: #000,
+          800: #000,
+          900: #fff,
+          A100: #000,
+          A200: #000,
+          A400: #000,
+          A700: #000
+        )
+      )
+    )
+);
+
+@mixin elonkit-theme($theme, $elonkit-theme: $elonkit-default-theme) {
+  @include es-alert-theme($theme, $elonkit-theme);
+  @include es-dropzone-theme($theme, $elonkit-theme);
+  @include es-inline-form-field-theme($theme, $elonkit-theme);
+  @include es-paginator-theme($theme, $elonkit-theme);
+  @include es-avatar-theme($theme, $elonkit-theme);
+  @include es-badge-theme($theme, $elonkit-theme);
+}
